@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Explore Africa — Tours & Safaris</title>
+  <meta name="description" content="Luxury African safaris, beach combos, multi-country adventures. Tailored for European travellers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fbfbfb; --card:#ffffff; --muted:#6b7280; --accent:#0f766e; --accent-2:#f59e0b;
+      --radius:14px; --maxwidth:1100px; --ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{font-family:var(--ff-sans);background:var(--bg);color:#0f172a;margin:0;padding:0;line-height:1.5}
+    .container{max-width:var(--maxwidth);margin:0 auto;padding:24px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:white;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;margin:18px 0}
+    .hero-left h1{font-size:clamp(26px,4vw,44px);margin:0 0 12px}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .hero-actions{display:flex;gap:12px}
+    .hero img{width:100%;border-radius:12px;display:block;object-fit:cover}
+
+    /* Sections */
+    section{margin:28px 0;padding:18px;background:transparent}
+    .grid{display:grid;gap:16px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Tours list */
+    .itinerary{display:flex;flex-direction:column;gap:10px}
+    .itinerary .row{display:flex;gap:12px;align-items:center}
+    .badge{background:#eef2f1;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700}
+    .price{margin-left:auto;font-weight:800}
+
+    /* Destinations */
+    .dest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+    .dest{position:relative;overflow:hidden;border-radius:12px}
+    .dest img{width:100%;height:160px;object-fit:cover;display:block}
+    .dest h4{position:absolute;left:12px;bottom:12px;margin:0;color:white;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+
+    /* Contact form */
+    form{display:grid;gap:10px}
+    input,select,textarea{padding:10px;border-radius:8px;border:1px solid #e6e9ef;font-size:14px}
+    button{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:none;font-weight:700}
+
+    footer{padding:18px 0;color:var(--muted);font-size:14px;border-top:1px solid #eef2f3;margin-top:24px}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:520px){
+      nav{display:none}
+      .brand{gap:8px}
+    }
+
+    /* Language toggle */
+    .lang-switch{display:flex;gap:6px;align-items:center}
+    .lang-switch button{background:transparent;border:1px solid #e6eef0;padding:6px 8px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">EA</div>
+        <div>
+          <div style="font-weight:800">Explore Africa</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Beyond Safaris — Discover, Relax, Connect</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#tours" data-lang-key="nav_tours">Tours</a>
+        <a href="#destinations" data-lang-key="nav_destinations">Destinations</a>
+        <a href="#why" data-lang-key="nav_why">Why Us</a>
+        <a href="#gallery" data-lang-key="nav_gallery">Gallery</a>
+        <a href="#contact" class="cta" data-lang-key="nav_contact">Plan Your Trip</a>
+      </nav>
+      <div class="lang-switch" aria-hidden="false">
+        <button id="lang-en">EN</button>
+        <button id="lang-fr">FR</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-left">
+        <h1 data-lang-key="hero_title">Luxury African Safaris & Beach Escapes</h1>
+        <p data-lang-key="hero_tag">Tailor-made adventures across Tanzania, Zambia, South Africa & Zanzibar. Responsible travel, local expertise, unforgettable memories.</p>
+        <div class="hero-actions">
+          <a href="#tours" class="cta" data-lang-key="hero_cta">Explore Our Tours</a>
+          <a href="#contact" class="small" style="align-self:center;text-decoration:none" data-lang-key="hero_call">Free 15-min planning call</a>
+        </div>
+        <div style="margin-top:14px;color:var(--muted);font-size:13px">
+          <strong data-lang-key="hero_trust">Trusted by European travellers • Multilingual guides • Sustainable partners</strong>
+        </div>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="safari and beach"/>
+      </div>
+    </section>
+
+    <!-- TOURS -->
+    <section id="tours">
+      <div class="container">
+        <h2 data-lang-key="tours_title">Tours & Itineraries</h2>
+        <p class="small" data-lang-key="tours_desc">Organized by category — Safari, Beach, Cultural & Multi-country adventures. Each itinerary includes duration, highlights and a daily breakdown.</p>
+
+        <div class="cards" style="margin-top:12px">
+          <!-- Card 1 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Serengeti" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:10px">
+            <h3>Luxury Safari + Beach (10 days)</h3>
+            <div class="small">Days 1–3: Serengeti • Days 4–5: Ngorongoro • Days 6–10: Zanzibar beach & Stone Town</div>
+            <div style="display:flex;align-items:center;margin-top:10px">
+              <div class="badge" aria-hidden>10D</div>
+              <div class="price">From €3,900</div>
+              <div style="margin-left:10px"><a href="#contact" class="small">Request Quote</a></div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Victoria Falls" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:10px">
+            <h3>Adventure & Nature Explorer (12 days)</h3>
+            <div class="small">Victoria Falls • South Luangwa Safari • Cape Town • Wine country</div>
+            <div style="display:flex;align-items:center;margin-top:10px">
+              <div class="badge">12D</div>
+              <div class="price">From €4,400</div>
+              <div style="margin-left:10px"><a href="#contact" class="small">Request Quote</a></div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c4?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Pan African" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:10px">
+            <h3>Pan-African Highlights (14 days)</h3>
+            <div class="small">Tanzania → Zambia → South Africa — perfect for honeymooners & luxury travellers</div>
+            <div style="display:flex;align-items:center;margin-top:10px">
+              <div class="badge">14D</div>
+              <div class="price">From €6,800</div>
+              <div style="margin-left:10px"><a href="#contact" class="small">Request Quote</a></div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Sample Itinerary expandable area -->
+        <div class="card" style="margin-top:16px">
+          <h3 data-lang-key="sample_title">Sample Itineraries</h3>
+          <div class="itinerary">
+            <div class="row"><strong>Luxury Safari + Beach (10 Days)</strong> <span class="small">— Serengeti, Ngorongoro, Zanzibar</span></div>
+            <div class="row"><strong>Adventure & Nature (12 Days)</strong> <span class="small">— Victoria Falls, South Luangwa, Cape Town</span></div>
+            <div class="row"><strong>Pan-African Highlights (14 Days)</strong> <span class="small">— Tanzania → Zambia → South Africa</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section id="destinations">
+      <h2 data-lang-key="dest_title">Destinations</h2>
+      <p class="small" data-lang-key="dest_desc">Tanzania, Zanzibar, Zambia & South Africa — best times to visit, must-see attractions and travel tips.</p>
+
+      <div class="dest-grid" style="margin-top:12px">
+        <div class="dest card"><img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Tanzania"><h4>Tanzania</h4></div>
+        <div class="dest card"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Zanzibar"><h4>Zanzibar</h4></div>
+        <div class="dest card"><img src="https://images.unsplash.com/photo-1508264165352-258a6b0f3b93?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Zambia"><h4>Zambia</h4></div>
+        <div class="dest card"><img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="South Africa"><h4>South Africa</h4></div>
+      </div>
+    </section>
+
+    <!-- WHY TRAVEL WITH US -->
+    <section id="why">
+      <h2 data-lang-key="why_title">Why Travel With Us?</h2>
+      <div class="cards" style="margin-top:12px">
+        <div class="card">
+          <h3 data-lang-key="why_local">Local Knowledge & Safety</h3>
+          <p class="small">Multilingual guides, vetted partners, clear emergency protocols and 24/7 local support.</p>
+        </div>
+        <div class="card">
+          <h3 data-lang-key="why_responsible">Responsible Travel</h3>
+          <p class="small">Conservation partnerships, community contributions and eco-conscious lodges.</p>
+        </div>
+        <div class="card">
+          <h3 data-lang-key="why_testimonials">Testimonials</h3>
+          <p class="small">"Best trip of our lives" — Anna, UK. "Seamless from start to finish" — Marc, France.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2 data-lang-key="gallery_title">Gallery</h2>
+      <p class="small" data-lang-key="gallery_desc">Real photos from past trips — submit your photos to be featured.</p>
+      <div class="gallery" style="margin-top:10px">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop&s=placeholder" alt="gallery1">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop&s=placeholder" alt="gallery2">
+        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop&s=placeholder" alt="gallery3">
+        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c4?q=80&w=800&auto=format&fit=crop&s=placeholder" alt="gallery4">
+      </div>
+    </section>
+
+    <!-- CONTACT / PLAN -->
+    <section id="contact">
+      <h2 data-lang-key="contact_title">Plan Your Trip / Contact Us</h2>
+      <div class="card" style="display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:12px">
+        <div>
+          <p class="small">Send us your travel dates, interests, group size and budget. We'll reply with a tailored itinerary and a free 15-minute planning call option.</p>
+          <form id="inquiry">
+            <input name="name" placeholder="Full name" required>
+            <input name="email" placeholder="Email" type="email" required>
+            <input name="dates" placeholder="Travel dates (e.g. 2026-06-10 to 2026-06-20)">
+            <select name="interests">
+              <option>Safari</option>
+              <option>Beach</option>
+              <option>Cultural</option>
+              <option>Multi-country</option>
+            </select>
+            <input name="group" placeholder="Group size" type="number">
+            <textarea name="notes" placeholder="Budget / special requests" rows="4"></textarea>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button type="submit">Send Inquiry</button>
+              <a href="https://wa.me/" target="_blank" style="align-self:center;text-decoration:none" class="small">WhatsApp</a>
+            </div>
+          </form>
+        </div>
+        <div class="card" style="background:linear-gradient(180deg,#ffffff,#f8faf9);">
+          <h4>Quick Contact</h4>
+          <p class="small">Email: hello@exploreafrica.example</p>
+          <p class="small">Phone: +44 20 7946 0958</p>
+          <p class="small">Free 15-min call (Zoom/WhatsApp) — Book on request</p>
+          <div style="margin-top:8px">
+            <strong>Office hours (Europe)</strong>
+            <div class="small">Mon–Fri 09:00–18:00 CET</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG / MARKETING NOTE (brief) -->
+    <section id="blog">
+      <h2 data-lang-key="blog_title">Blog / Travel Tips</h2>
+      <div class="card" style="margin-top:12px">
+        <p class="small"><strong>SEO ideas:</strong> "Luxury African safaris"; "Zanzibar honeymoon from Europe"; "Multi-country African tours". Create lead magnet: "Ultimate Safari Packing List" for email capture.</p>
+      </div>
+    </section>
+
+    <!-- PARTNERSHIPS & OPERATIONS -->
+    <section>
+      <h2 data-lang-key="ops_title">Local Partnerships & Operations Toolkit</h2>
+      <div class="cards" style="margin-top:12px">
+        <div class="card"><h4>Partnerships</h4><p class="small">Lodges, guides, airlines, conservation orgs.</p></div>
+        <div class="card"><h4>Operations</h4><p class="small">CRM, client questionnaire, contract templates, training protocols.</p></div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>Explore Africa</strong> — All rights reserved</div>
+        <div class="small">Designed for European clients • Multilingual • Mobile-ready</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple language dictionary (EN -> FR minimal)
+    const translations = {
+      fr: {
+        nav_tours: 'Circuits', nav_destinations: 'Destinations', nav_why: 'Pourquoi nous', nav_gallery: 'Galerie', nav_contact: 'Planifier',
+        hero_title: 'Safaris de luxe et plages africaines', hero_tag: "Voyages sur mesure au Tanzanie, Zambie, Afrique du Sud et Zanzibar.", hero_cta: 'Découvrir nos circuits', hero_call: 'Appel planif. gratuit 15 min', hero_trust: 'Approuvé par des voyageurs européens • Guides polyglottes',
+        tours_title: 'Circuits & Itinéraires', tours_desc: 'Organisés par catégorie — Safari, Plage, Culture & Multi-pays', sample_title: 'Exemples d\'itinéraires',
+        dest_title: 'Destinations', dest_desc: 'Meilleures périodes, attractions incontournables et conseils de voyage.',
+        why_title: 'Pourquoi voyager avec nous?', why_local: 'Connaissance locale & sécurité', why_responsible: 'Voyage responsable', why_testimonials: 'Témoignages',
+        gallery_title: 'Galerie', gallery_desc: 'Photos réelles de voyages précédents.', contact_title: 'Planifier votre voyage', blog_title: 'Blog / Conseils', ops_title: 'Partenariats & Opérations'
+      }
+    }
+
+    function setLang(lang){
+      // default English keeps original text. Replace if translation exists.
+      if(!translations[lang]) return;
+      document.querySelectorAll('[data-lang-key]').forEach(el=>{
+        const key = el.getAttribute('data-lang-key');
+        const txt = translations[lang][key];
+        if(txt) el.textContent = txt;
+      })
+    }
+
+    document.getElementById('lang-fr').addEventListener('click',()=>setLang('fr'))
+    document.getElementById('lang-en').addEventListener('click',()=>location.reload())
+
+    // Contact form: simple client-side handler (replace with real endpoint)
+    document.getElementById('inquiry').addEventListener('submit',function(e){
+      e.preventDefault();
+      alert('Thanks! Your inquiry has been recorded. We will reply shortly.');
+      this.reset();
+    })
+  </script>
+</body>
+</html>
